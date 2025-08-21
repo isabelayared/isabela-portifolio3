@@ -1,0 +1,454 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;700&display=swap');
+
+/* --- ESTILOS GERAIS --- */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #000;
+    color: #B39F7F;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* --- ESTILOS DA NAVEGAÇÃO --- */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 90%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 20px 40px;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+}
+
+.nav-link {
+    color: #B39F7F;
+    text-decoration: none;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5em;
+    margin-left: 30px;
+    transition: color 0.3s ease-in-out;
+}
+
+.nav-link:hover {
+    color: #D1C0A9;
+}
+
+/* Estilos para o Seletor de Idioma */
+.language-selector {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-left: 30px;
+    font-size: 1.5em;
+    font-family: 'Bebas Neue', sans-serif;
+}
+
+.lang-button {
+    color: #B39F7F;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.lang-button:hover {
+    color: #D1C0A9;
+}
+
+.lang-button.active {
+    color: #fff; /* Cor para o idioma selecionado */
+}
+
+.lang-separator {
+    color: #B39F7F;
+}
+
+/* --- ESTILOS DA SEÇÃO INÍCIO --- */
+.container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.greeting, .portfolio-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 5em;
+    font-weight: normal;
+    margin: 0;
+}
+
+.name-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: 20px 0;
+}
+
+.name-part {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 12em;
+    font-weight: bold;
+    line-height: 1;
+    position: relative;
+    z-index: 2;
+    letter-spacing: 20px;
+    text-shadow: 
+        -10px -10px 0 #000,
+        5px 5px 0 #D1C0A9;
+}
+.name-part.first, .name-part.last {
+    color: #B39F7F;
+}
+.name-part.stroke {
+    color: transparent;
+    -webkit-text-stroke: 0.01rem #B39F7F; 
+    opacity: 0.8; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.name-section img {
+    position: absolute;
+    width: auto;
+    height: 100%;
+    z-index: 1;
+    left: 50%;
+    transform: translate(-50%, -5%);
+    border-radius: 20px;
+}
+
+.arrow-down-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.arrow-down {
+    font-size: 2em;
+    margin-top: 20px;
+    animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+/* --- ESTILOS DA SEÇÃO SOBRE MIM --- */
+.about-me {
+    background-color: #000;
+    color: #B39F7F;
+    padding: 80px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 4em;
+    margin-bottom: 1px;
+}
+
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+    max-width: 1100px;
+    margin-top: 40px;
+}
+
+.about-image img {
+    width: auto;
+    height: auto;
+    border-radius: 10px;
+}
+
+.about-text {
+    text-align: left;
+    max-width: 600px;
+    line-height: 1.6;
+}
+
+.about-text p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1em;
+    margin-bottom: 25px;
+}
+
+.cv-button {
+    display: inline-block;
+    padding: 12px 30px;
+    margin-top: 20px;
+    background-color: transparent;
+    color: #B39F7F;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    border: 2px solid #B39F7F;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.cv-button:hover {
+    background-color: #B39F7F;
+    color: #000;
+}
+
+/* --- ESTILOS DA SEÇÃO PROJETOS (CARROSSEL) --- */
+.projects-section {
+    padding: 80px 40px;
+    background-color: #000;
+}
+
+.subtitle {
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 25px;
+    color: #fff;
+    font-size: 1.4em;
+}
+
+.projects-carousel-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.projects-carousel {
+    overflow: hidden;
+    width: 100%;
+    max-width: 900px;
+    position: relative;
+}
+
+.carousel-track {
+    display: flex;
+    width: 100%;
+}
+
+.project-card {
+    flex-shrink: 0; 
+    width: 100%; 
+    box-sizing: border-box;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.project-card img {
+    max-width: 90%;
+    height: auto; 
+    display: block;
+    margin: 50px ; 
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+    transition: transform 0.2s;
+}
+
+.project-card img:hover {
+    transform: scale(1.05);
+}
+
+.project-info {
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    margin-top: 15px;
+}
+
+.project-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2em;
+    margin: 0;
+}
+
+.project-description {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5em;
+    margin: 5px 0 15px;
+}
+
+.project-techs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.tech-tag {
+    font-family: 'Poppins', sans-serif;
+    background-color: #fff;
+    color: #000;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 1em;
+}
+
+/* Estilos dos botões de navegação */
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    font-size: 2em;
+    cursor: pointer;
+    z-index: 5;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.carousel-button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #D1C0A9;
+}
+
+.prev-button {
+    left: 0;
+}
+
+.next-button {
+    right: 0;
+}
+
+
+/* --- ESTILOS DA SEÇÃO CONTATO --- */
+.contact-section {
+    padding: 80px 40px;
+}
+
+.conteudo00 {
+    text-align: center;
+}
+
+.conteudo00 h2 {
+    text-align: center;
+    font-weight: 700;
+    font-size: 3rem;
+    line-height: 2.775rem;
+    margin-bottom: 0.625rem;
+}
+
+.conteudo00 p{
+    font-size: 2.5vw;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    gap: 2%;
+    margin-bottom: 5%;
+}
+
+.botao01 {
+    font-family: var(--font);
+    font-weight: 700;
+    border: none;
+    border-radius: 0.3125rem;
+    background-color: #B39F7F;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 1.5% 3%;
+    font-size: 1.5vw;
+}
+
+
+/* --- MEDIA QUERIES (RESPONSIVIDADE) --- */
+@media (max-width: 768px) {
+    /* Navbar */
+    .navbar {
+        flex-direction: column; 
+        padding: 20px;
+        position: relative; 
+        background-color: #000; 
+        backdrop-filter: none;
+    }
+    .nav-link {
+        margin: 10px 0;
+        font-size: 1.5em; 
+    }
+
+    /* Seção de Início */
+    .greeting, .portfolio-text {
+        font-size: 3em;
+    }
+    .name-part {
+        font-size: 6em;
+        letter-spacing: 10px;
+    }
+    .name-section img {
+        width: 90%;
+    }
+
+    /* Seção Sobre Mim */
+    .about-me {
+        padding: 50px 20px;
+    }
+    .section-title {
+        font-size: 3em;
+    }
+    .about-content {
+        flex-direction: column;
+        gap: 40px;
+    }
+    .about-text {
+        text-align: center;
+        max-width: 90%;
+    }
+    .about-text p {
+        font-size: 1em;
+    }
+    .cv-button {
+        padding: 10px 25px;
+        font-size: 0.9em;
+    }
+
+    /* Seção de Projetos */
+    .projects-carousel {
+        max-width: 100%;
+    }
+    .project-card {
+        padding: 0 10px;
+    }
+    .carousel-button {
+        font-size: 1.5em;
+        padding: 8px 12px;
+    }
+    .prev-button {
+        left: 5px;
+    }
+    .next-button {
+        right: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .greeting, .portfolio-text {
+        font-size: 2.5em;
+    }
+    .name-part {
+        font-size: 4em;
+        letter-spacing: 5px;
+    }
+}
