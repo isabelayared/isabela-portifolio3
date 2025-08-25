@@ -388,6 +388,7 @@ body {
     .nav-links-container {
         display: none;
         flex-direction: column;
+        align-items: center;
         width: 100%;
         position: absolute;
         top: 100%;
@@ -422,8 +423,8 @@ body {
     z-index: 2;
     letter-spacing: clamp(5px, 2vw, 20px);
     text-shadow: 
-        -10px -10px 0 var(--cor-background-darkmode),
-        5px 5px 0 #D1C0A9;
+        -4px -4px 0 var(--cor-background-darkmode),
+        2px 2px 0 #D1C0A9;
 }
 
 .name-part.first, .name-part.last {
@@ -434,7 +435,7 @@ body {
     color: transparent;
     -webkit-text-stroke: 0.01rem var(--cor-letra-darkmode);
     opacity: 0.8;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    text-shadow: 0.5px 0.5px 2px rgba(0, 0, 0, 0.3);
 }
 
 .name-section img {
@@ -451,7 +452,7 @@ body {
         gap: 40px;
     }
     .about-image {
-        width: 80%;
+        width: 50%;
     }
     .about-text {
         max-width: 100%;
@@ -471,10 +472,7 @@ body {
     .carousel-button {
         display: none;
     }
-    .button {
-        flex-direction: column;
-        gap: 15px;
-    }
+
     .botao01 {
         width: 100%;
         max-width: 300px;
