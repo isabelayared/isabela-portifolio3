@@ -32,11 +32,24 @@ document.querySelectorAll('.lang-button').forEach(button => {
     });
 });
 
-// Verifica o idioma salvo no localStorage ao carregar a página
+// Lógica para o menu hamburguer
 document.addEventListener('DOMContentLoaded', () => {
-    const savedLang = localStorage.getItem('lang') || 'pt';
-    setLanguage(savedLang);
-    
+    const hamburgerMenu = document.querySelector('.hamburger-menu');
+    const navLinksContainer = document.querySelector('.nav-links-container');
+
+    if (hamburgerMenu && navLinksContainer) {
+        hamburgerMenu.addEventListener('click', () => {
+            navLinksContainer.classList.toggle('active');
+        });
+    }
+
+    // Fecha o menu ao clicar em um link
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinksContainer.classList.remove('active');
+        });
+    });
+
     // O resto do seu código de carrossel
     const track = document.querySelector('.carousel-track');
     const cards = document.querySelectorAll('.project-card');
