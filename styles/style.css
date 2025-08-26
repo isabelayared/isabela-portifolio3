@@ -96,7 +96,7 @@ body {
 
 .greeting, .portfolio-text {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(2rem, 5vw, 5em);
+    font-size: clamp(2.5rem, 5vw, 5em);
     font-weight: normal;
     margin: 0;
 }
@@ -479,3 +479,4 @@ body {
         margin: 0 auto;
     }
 }
+
