@@ -2,9 +2,9 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-s-cale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Isabela Yared - Portfólio</title>
-    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="styles/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
@@ -26,12 +26,13 @@
             </div>
         </div>
     </nav>
+    
     <div class="container" id="inicio">
         <h1 class="greeting" data-key="ola">OLÁ, ME CHAMO</h1>
         <div class="name-section">
             <span class="name-part first">ISABEL</span>
             <span class="name-part stroke">A</span>
-            <img src="assets/isacapa.png" alt="Desenho da Isabel Yared">
+            <img src="assets/isacapa.png" alt="desenho da capa">
             <span class="name-part stroke">Y</span>
             <span class="name-part last">ARED</span>
         </div>
@@ -44,11 +45,14 @@
     </div>
 
     <section class="about-me" id="sobre-mim">
+        <div class="transition-divider top-divider">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill-dark"></path>
+            </svg>
+        </div>
+        
         <h2 class="section-title" data-key="tituloSobreMim">SOBRE MIM</h2>
         <div class="about-content">
-            <div class="about-image">
-                <img src="assets/isatimida.png" alt="Desenho Isa Tímida">
-            </div>
             <div class="about-text">
                 <p data-key="textoSobreMim1">DESDE PEQUENA SEMPRE GOSTEI DE APRENDER COISAS NOVAS, E O INGLÊS FOI UMA DAS MINHAS PRIMEIRAS CURIOSIDADES. ESTUDO DESDE PEQUENA. JÁ NO ENSINO MÉDIO, FIZ TÉCNICO EM ADMINISTRAÇÃO, O QUE ME DEU UMA BOA BASE PARA ENTENDER SOBRE ORGANIZAÇÃO, GESTÃO, RESPONSABILIDADE E TRABALHO EM EQUIPE. HOJE, ESTOU CADA VEZ MAIS APAIXONADA PELA ÁREA DE TECNOLOGIA DA INFORMAÇÃO, E ISSO ME INCENTIVA A QUERER APRENDER MAIS E MAIS TODOS OS DIAS.</p>
                 <p data-key="textoSobreMim2">NO LADO PROFISSIONAL, ATUALMENTE TRABALHO COMO JOVEM APRENDIZ E TENHO COMO OBJETIVO CRESCER NA MINHA CARREIRA, BUSCANDO SEMPRE NOVAS OPORTUNIDADES PARA EVOLUIR E COLOCAR EM PRÁTICA TUDO QUE APRENDO.</p>
@@ -61,78 +65,73 @@
     <section class="projects-section" id="projetos">
         <h2 class="section-title" data-key="tituloProjetos">PROJETOS</h2>
         <p class="subtitle" data-key="subtituloProjetos">CONHEÇA ALGUNS DE MEUS PROJETOS</p>
-        <div class="projects-carousel-container">
-            <button class="carousel-button prev-button">&larr;</button>
-            <div class="projects-carousel">
-                <div class="carousel-track">
-                    
-                    <div class="project-card">
-                        <a href="https://portif-lio-isabelayared.vercel.app" target="_blank">
-                            <img src="/assets/portifolio001.png" alt="projeto01">
-                        </a>
-                        <div class="project-info">
-                            <h3 class="project-title" data-key="projTitulo1">Portifólio Pessoal</h3>
-                            <p class="project-description" data-key="projDesc1">Meu primeiro projeto</p>
-                            <div class="project-techs">
-                                <span class="tech-tag">HTML</span>
-                                <span class="tech-tag">CSS</span>
-                            </div>
-                        </div>
+        
+        <div class="projects-grid">
+            <div class="project-card">
+                <a href="https://github.com/isabelayared/SistemaValidade/tree/main" target="_blank">
+                    <img src="/assets/sistemavalidade.png" alt="projeto Sistema Validade">
+                </a>
+                <div class="project-info">
+                    <h3 class="project-title" data-key="projTitulo3">Sistema Validade</h3>
+                    <p class="project-description" data-key="projDesc3">Controle de Validade para Farmácias</p>
+                    <div class="project-techs">
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">CSS</span>
                     </div>
-
-                    <div class="project-card">
-                        <a href="https://portifolio01-ivory.vercel.app" target="_blank">
-                            <img src="/assets/portifolio002.png" alt="projeto02">
-                        </a>
-                        <div class="project-info">
-                            <h3 class="project-title" data-key="projTitulo2">Portifólio Pessoal</h3>
-                            <p class="project-description" data-key="projDesc2">Meu Portifólio</p>
-                            <div class="project-techs">
-                                <span class="tech-tag">JS</span>
-                                <span class="tech-tag">HTML</span>
-                                <span class="tech-tag">CSS</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <a href="https://github.com/isabelayared/SistemaValidade/tree/main" target="_blank">
-                            <img src="/assets/sistemavalidade.png" alt="projeto03">
-                        </a>
-                        <div class="project-info">
-                            <h3 class="project-title" data-key="projTitulo3">Sistema Validade</h3>
-                            <p class="project-description" data-key="projDesc3">Controle de Validade para Farmácias</p>
-                            <div class="project-techs">
-                                <span class="tech-tag">Java</span>
-                                <span class="tech-tag">HTML</span>
-                                <span class="tech-tag">CSS</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <a href="https://github.com/isabelayared/Sistema-urna-eletr-nica" target="_blank">
-                            <img src="/assets/sistemaurna.png" alt="projeto04">
-                        </a>
-                        <div class="project-info">
-                            <h3 class="project-title" data-key="projTitulo4">Sistema Urna Eletrônica</h3>
-                            <p class="project-description" data-key="projDesc4">Urna Eletrônica Simulada com Segurança Criptográfica</p>
-                            <div class="project-techs">
-                                <span class="tech-tag">Python</span>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </div>
-            <button class="carousel-button next-button">&rarr;</button>
+            <div class="project-card">
+                <a href="https://github.com/isabelayared/Sistema-urna-eletr-nica" target="_blank">
+                    <img src="/assets/sistemaurna.png" alt="projeto Urna Eletrônica">
+                </a>
+                <div class="project-info">
+                    <h3 class="project-title" data-key="projTitulo4">Sistema Urna Eletrônica</h3>
+                    <p class="project-description" data-key="projDesc4">Urna Eletrônica Simulada com Segurança Criptográfica</p>
+                    <div class="project-techs">
+                        <span class="tech-tag">Python</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <a href="https://portifolio01-ivory.vercel.app" target="_blank">
+                    <img src="/assets/portifolio002.png" alt="projeto Portfólio Pessoal 2">
+                </a>
+                <div class="project-info">
+                    <h3 class="project-title" data-key="projTitulo2">Portifólio Pessoal</h3>
+                    <p class="project-description" data-key="projDesc2">Meu Portifólio nº2</p>
+                    <div class="project-techs">
+                        <span class="tech-tag">JS</span>
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">CSS</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <a href="https://portif-lio-isabelayared.vercel.app" target="_blank">
+                    <img src="/assets/portifolio001.png" alt="projeto Portfólio Pessoal 1">
+                </a>
+                <div class="project-info">
+                    <h3 class="project-title" data-key="projTitulo1">Portifólio Pessoal</h3>
+                    <p class="project-description" data-key="projDesc1">Meu primeiro projeto</p>
+                    <div class="project-techs">
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">CSS</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <section class="contact-section" id="contato">
+        <div class="transition-divider bottom-divider">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill-dark"></path>
+            </svg>
+        </div>
+
         <h2 class="section-title" data-key="tituloContato">CONTATO</h2>
         <p class="subtitle" data-key="subtituloContato">GOSTOU DO MEU TRABALHO? ENTRE EM CONTATO COMIGO :)</p>
-
         <div class="button">
             <a href="https://linkedin.com/in/isabela-yared-soares" class="botao01" target="_blank">Linkedin</a>
             <a href="https://github.com/isabelayared" target="_blank" class="botao01">GitHub</a>
@@ -152,4 +151,3 @@
     <script src="/script.js"></script>
 </body>
 </html>
-
