@@ -1,8 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;700&display=swap');
 
 :root {
-    --cor-background-darkmode: #000;
-    --cor-letra-darkmode: #B39F7F;
+    --cor-fundo-escuro: #000000;
+    --cor-fundo-claro: #FFFFFF;
+    --cor-letra-destaque: #B39F7F;
+    --cor-letra-claro: #FFFFFF;
+    --cor-letra-escuro: #333333;
 }
 
 /* --- ESTILOS GERAIS --- */
@@ -11,8 +14,8 @@ html {
 }
 
 body {
-    background-color: var(--cor-background-darkmode);
-    color: var(--cor-letra-darkmode);
+    background-color: var(--cor-fundo-escuro);
+    color: var(--cor-letra-destaque);
     font-family: 'Poppins', sans-serif;
     text-align: center;
     margin: 0;
@@ -24,14 +27,14 @@ body {
 .navbar {
     position: fixed;
     top: 0;
-    width: 90%;
+    width: 100%;
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    padding: 20px 40px;
+    padding: 15px 40px;
     z-index: 10;
-    background-color: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(5px);
+    background-color: var(--cor-fundo-escuro);
+    box-sizing: border-box;
 }
 
 .nav-links-container {
@@ -40,10 +43,10 @@ body {
 }
 
 .nav-link {
-    color: var(--cor-letra-darkmode);
+    color: var(--cor-letra-destaque);
     text-decoration: none;
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.5em;
+    font-size: 1.4em;
     margin-left: 30px;
     transition: color 0.3s ease-in-out;
 }
@@ -57,12 +60,12 @@ body {
     align-items: center;
     gap: 5px;
     margin-left: 30px;
-    font-size: 1.5em;
+    font-size: 1.4em;
     font-family: 'Bebas Neue', sans-serif;
 }
 
 .lang-button {
-    color: var(--cor-letra-darkmode);
+    color: var(--cor-letra-destaque);
     text-decoration: none;
     transition: color 0.3s ease-in-out;
 }
@@ -72,11 +75,11 @@ body {
 }
 
 .lang-button.active {
-    color: #fff;
+    color: var(--cor-letra-claro);
 }
 
 .lang-separator {
-    color: var(--cor-letra-darkmode);
+    color: var(--cor-letra-destaque);
 }
 
 .hamburger-menu {
@@ -92,11 +95,12 @@ body {
     flex-direction: column;
     padding: 20px;
     box-sizing: border-box;
+    position: relative;
 }
 
 .greeting, .portfolio-text {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(2.9rem, 5vw, 5em);
+    font-size: clamp(2.5rem, 5vw, 4em);
     font-weight: normal;
     margin: 0;
 }
@@ -109,7 +113,6 @@ body {
     margin: 20px 0;
 }
 
-/* Estilos originais para telas grandes */
 .name-part {
     font-family: 'Bebas Neue', sans-serif;
     font-size: clamp(4em, 15vw, 12em);
@@ -119,17 +122,17 @@ body {
     z-index: 2;
     letter-spacing: clamp(5px, 2vw, 20px);
     text-shadow: 
-        -10px -10px 0 var(--cor-background-darkmode),
+        -10px -10px 0 var(--cor-fundo-escuro),
         5px 5px 0 #D1C0A9;
 }
 
 .name-part.first, .name-part.last {
-    color: var(--cor-letra-darkmode);
+    color: var(--cor-letra-destaque);
 }
 
 .name-part.stroke {
     color: transparent;
-    -webkit-text-stroke: 0.01rem var(--cor-letra-darkmode);
+    -webkit-text-stroke: 0.01rem var(--cor-letra-destaque);
     opacity: 0.8;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
@@ -157,59 +160,77 @@ body {
 }
 
 @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
-        transform: translateY(0);
-    }
-    40% {
-        transform: translateY(-10px);
-    }
-    60% {
-        transform: translateY(-5px);
-    }
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+/* --- TRANSIÇÕES GRADUAIS (DIVISORES) --- */
+.transition-divider {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.transition-divider.top-divider {
+    top: 0;
+    margin-top: -1px;
+}
+
+.transition-divider.bottom-divider {
+    top: 0;
+    margin-top: -1px;
+}
+
+.transition-divider svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 100px;
+}
+
+.shape-fill-dark {
+    fill: var(--cor-fundo-escuro);
+}
+
+.shape-fill-light {
+    fill: var(--cor-fundo-claro);
 }
 
 /* --- ESTILOS DA SEÇÃO SOBRE MIM --- */
 .about-me {
-    background-color: var(--cor-background-darkmode);
-    color: var(--cor-letra-darkmode);
-    padding: 80px 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    background-color: var(--cor-fundo-claro);
+    color: var(--cor-letra-escuro);
+    padding: 120px 40px 80px 40px;
+    position: relative;
 }
 
 .section-title {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(3em, 6vw, 4em);
-    margin-bottom: 1px;
+    font-size: clamp(2.8em, 6vw, 3.8em);
+    margin-bottom: 20px;
+    color: var(--cor-letra-escuro);
 }
 
 .about-content {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 80px;
-    max-width: 1100px;
-    margin-top: 40px;
-}
-
-.about-image img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .about-text {
     text-align: left;
-    max-width: 600px;
-    line-height: 1.6;
+    line-height: 1.7;
 }
 
 .about-text p {
     font-family: 'Poppins', sans-serif;
-    font-size: clamp(1em, 2vw, 1.1em);
-    margin-bottom: 25px;
+    font-size: clamp(0.9rem, 1.8vw, 1rem);
+    margin-bottom: 20px;
 }
 
 .cv-button {
@@ -217,172 +238,163 @@ body {
     padding: 12px 30px;
     margin-top: 20px;
     background-color: transparent;
-    color: var(--cor-letra-darkmode);
+    color: var(--cor-letra-escuro);
     text-decoration: none;
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
-    border: 2px solid var(--cor-letra-darkmode);
+    border: 2px solid var(--cor-letra-escuro);
     border-radius: 5px;
     transition: all 0.3s ease;
 }
 
 .cv-button:hover {
-    background-color: var(--cor-letra-darkmode);
-    color: var(--cor-background-darkmode);
+    background-color: var(--cor-letra-escuro);
+    color: var(--cor-fundo-claro);
 }
 
-/* --- ESTILOS DA SEÇÃO PROJETOS (CARROSSEL) --- */
+/* --- ESTILOS DA SEÇÃO PROJETOS (GRID) --- */
 .projects-section {
     padding: 80px 40px;
-    background-color: var(--cor-background-darkmode);
+    background-color: var(--cor-fundo-claro);
+    color: var(--cor-letra-escuro);
+    position: relative;
 }
 
 .subtitle {
     font-family: 'Poppins', sans-serif;
-    margin-bottom: 25px;
-    color: #fff;
-    font-size: clamp(1.2em, 2vw, 1.4em);
+    margin-bottom: 40px;
+    color: #555;
+    font-size: clamp(1.1em, 2vw, 1.3em);
 }
 
-.projects-carousel-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    padding: 0 40px;
-}
-
-.projects-carousel {
-    overflow: hidden;
-    width: 100%;
-    max-width: 900px;
-    position: relative;
-}
-
-.carousel-track {
-    display: flex;
-    width: 100%;
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .project-card {
-    flex-shrink: 0;
-    width: 100%;
-    box-sizing: border-box;
+    background-color: #f9f9f9;
+    border-radius: 15px;
+    overflow: hidden;
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.project-card a {
+    display: block;
 }
 
 .project-card img {
-    max-width: 90%;
-    height: auto;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
     display: block;
-    margin: 50px auto;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s;
-}
-
-.project-card img:hover {
-    transform: scale(1.05);
 }
 
 .project-info {
-    text-align: center;
-    width: 100%;
-    max-width: 400px;
-    margin-top: 15px;
+    padding: 20px;
 }
 
 .project-title {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(1.5em, 3vw, 2em);
-    margin: 0;
+    font-size: clamp(1.4em, 3vw, 1.8em);
+    margin: 0 0 10px 0;
 }
 
 .project-description {
     font-family: 'Poppins', sans-serif;
-    font-size: clamp(1em, 2vw, 1.5em);
-    margin: 5px 0 15px;
+    font-size: clamp(0.9em, 2vw, 1em);
+    margin: 0 0 15px 0;
+    color: #555;
 }
 
 .project-techs {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 8px;
 }
 
 .tech-tag {
     font-family: 'Poppins', sans-serif;
-    background-color: #fff;
-    color: var(--cor-background-darkmode);
-    padding: 5px 10px;
-    border-radius: 3px;
-    font-size: 1em;
-}
-
-.carousel-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: #fff;
-    border: none;
-    padding: 10px 15px;
-    font-size: 2em;
-    cursor: pointer;
-    z-index: 5;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.carousel-button:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-    color: #D1C0A9;
-}
-
-.prev-button {
-    left: 0;
-}
-
-.next-button {
-    right: 0;
+    background-color: var(--cor-letra-destaque);
+    color: var(--cor-fundo-claro);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    font-weight: 600;
 }
 
 /* --- ESTILOS DA SEÇÃO CONTATO --- */
 .contact-section {
-    padding: 80px 40px;
+    padding: 120px 40px 80px 40px;
+    background-color: var(--cor-fundo-escuro);
+    color: var(--cor-letra-claro);
+    position: relative;
+}
+.contact-section .section-title {
+    color: var(--cor-letra-claro);
+}
+
+.contact-section .subtitle {
+    color: var(--cor-letra-destaque);
 }
 
 .button {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 10px 2%;
-    margin-bottom: 5%;
+    gap: 20px;
+    margin-top: 30px;
 }
 
 .botao01 {
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
-    border: none;
-    border-radius: 0.3125rem;
-    background-color: var(--cor-letra-darkmode);
-    color: white;
+    border: 2px solid var(--cor-letra-destaque);
+    border-radius: 5px;
+    background-color: transparent;
+    color: var(--cor-letra-destaque);
     cursor: pointer;
     text-decoration: none;
     padding: 12px 24px;
     font-size: clamp(0.9rem, 2vw, 1.1rem);
     white-space: nowrap;
+    transition: all 0.3s ease;
+}
+
+.botao01:hover {
+    background-color: var(--cor-letra-destaque);
+    color: var(--cor-fundo-escuro);
+}
+
+/* --- ESTILOS DO RODAPÉ --- */
+footer {
+    background-color: var(--cor-fundo-escuro);
+    color: var(--cor-letra-destaque);
+    padding: 20px 0;
+}
+.footer hr {
+    border-color: rgba(179, 159, 127, 0.3);
+    width: 80%;
+}
+.footer p {
+    font-size: 0.9em;
 }
 
 /* --- MEDIA QUERIES (RESPONSIVIDADE) --- */
-
-/* Telas menores que 992px (tablets e celulares grandes) */
 @media (max-width: 992px) {
     .navbar {
-        justify-content: center;
+        justify-content: flex-end;
         padding: 15px 20px;
     }
     .nav-links-container {
@@ -393,88 +405,43 @@ body {
         position: absolute;
         top: 100%;
         left: 0;
-        background-color: var(--cor-background-darkmode);
+        background-color: var(--cor-fundo-escuro);
     }
     .nav-links-container.active {
         display: flex;
+        padding: 20px 0;
     }
-    .nav-link {
+    .nav-link, .language-selector {
         margin: 10px 0;
-        font-size: 1.2em;
     }
     .hamburger-menu {
         display: block;
         font-size: 2em;
         background: none;
         border: none;
-        color: var(--cor-letra-darkmode);
+        color: var(--cor-letra-destaque);
         cursor: pointer;
-        position: absolute;
-        right: 20px;
     }
-    
-    .name-part {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(4em, 15vw, 12em);
-    font-weight: bold;
-    line-height: 1;
-    position: relative;
-    z-index: 2;
-    letter-spacing: clamp(5px, 2vw, 20px);
-    text-shadow: 
-        -4px -4px 0 var(--cor-background-darkmode),
-        2px 2px 0 #D1C0A9;
-}
 
-.name-part.first, .name-part.last {
-    color: var(--cor-letra-darkmode);
-}
-
-.name-part.stroke {
-    color: transparent;
-    -webkit-text-stroke: 0.01rem var(--cor-letra-darkmode);
-    opacity: 0.8;
-    text-shadow: 0.5px 0.5px 2px rgba(0, 0, 0, 0.3);
-}
-
-.name-section img {
-    position: absolute;
-    width: auto;
-    height: 100%;
-    z-index: 1;
-    left: 50%;
-    transform: translate(-50%, -5%);
-    border-radius: 20px;
-    max-height: 80vh;
-}
     .about-content {
-        gap: 40px;
-    }
-    .about-image {
-        width: 50%;
-    }
-    .about-text {
-        max-width: 100%;
-        text-align: center;
         padding: 0 15px;
     }
+    .about-text {
+        text-align: center;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+        padding: 0 20px;
+    }
 }
 
-/* Telas menores que 768px (smartphones) */
 @media (max-width: 768px) {
     .name-part {
         font-size: clamp(2.5em, 10vw, 4em); 
     }
-    .projects-carousel-container {
-        padding: 0;
-    }
-    .carousel-button {
-        display: none;
-    }
-
     .botao01 {
         width: 100%;
         max-width: 300px;
-        margin: 0 auto;
     }
 }
