@@ -8,8 +8,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 </head>
 <body>
+    
+    <div class="cursor-dot" data-cursor-dot></div>
+    <div class="cursor-outline" data-cursor-outline></div>
+
     <nav class="navbar">
         <button class="hamburger-menu" aria-label="Abrir menu de navegação">
             &#9776;
@@ -18,6 +25,7 @@
             <a href="#inicio" class="nav-link" data-key="inicio">INÍCIO</a>
             <a href="#sobre-mim" class="nav-link" data-key="sobreMim">SOBRE MIM</a>
             <a href="#projetos" class="nav-link" data-key="projetos">PROJETOS</a>
+            <a href="#github-api" class="nav-link">GITHUB</a>
             <a href="#contato" class="nav-link" data-key="contato">CONTATO</a>
             <div class="language-selector">
                 <a href="#" class="lang-button active" data-lang="pt">PT</a>
@@ -54,9 +62,9 @@
         <h2 class="section-title" data-key="tituloSobreMim">SOBRE MIM</h2>
         <div class="about-content">
             <div class="about-text">
-                <p data-key="textoSobreMim1">DESDE PEQUENA SEMPRE GOSTEI DE APRENDER COISAS NOVAS, E O INGLÊS FOI UMA DAS MINHAS PRIMEIRAS CURIOSIDADES. ESTUDO DESDE PEQUENA. JÁ NO ENSINO MÉDIO, FIZ TÉCNICO EM ADMINISTRAÇÃO, O QUE ME DEU UMA BOA BASE PARA ENTENDER SOBRE ORGANIZAÇÃO, GESTÃO, RESPONSABILIDADE E TRABALHO EM EQUIPE. HOJE, ESTOU CADA VEZ MAIS APAIXONADA PELA ÁREA DE TECNOLOGIA DA INFORMAÇÃO, E ISSO ME INCENTIVA A QUERER APRENDER MAIS E MAIS TODOS OS DIAS.</p>
+                <p data-key="textoSobreMim1">DESDE PEQUENA SEMPRE GOSTEI DE APRENDER COISAS NOVAS, E O INGLÊS FOI UMA DAS MINHAS PRIMEIRAS CURIOSIDADES. ESTUDO O IDIOMA DESDE CEDO. JÁ NO ENSINO MÉDIO, FIZ TÉCNICO EM ADMINISTRAÇÃO, O QUE ME DEU UMA BOA BASE SOBRE ORGANIZAÇÃO, GESTÃO, RESPONSABILIDADE E TRABALHO EM EQUIPE. HOJE, ESTOU CADA VEZ MAIS APAIXONADA PELA ÁREA DE TECNOLOGIA DA INFORMAÇÃO, O QUE ME INCENTIVA A APRENDER MAIS TODOS OS DIAS.</p>
                 <p data-key="textoSobreMim2">NO LADO PROFISSIONAL, ATUALMENTE TRABALHO COMO JOVEM APRENDIZ E TENHO COMO OBJETIVO CRESCER NA MINHA CARREIRA, BUSCANDO SEMPRE NOVAS OPORTUNIDADES PARA EVOLUIR E COLOCAR EM PRÁTICA TUDO QUE APRENDO.</p>
-                <p data-key="textoSobreMim3">NA VIDA PESSOAL, ADORO VIVER NOVAS EXPERIÊNCIAS E SEMPRE TENTO EQUILIBRAR ESTUDO, TRABALHO E LAZER. SOU APAIXONADA POR CACHORRINHOS E TENHO UM SONHO DE TER UMA CASINHA NA PRAIA, PORQUE PRA MIM NADA SE COMPARA À ENERGIA DE OLHAR PRO MAR E SENTIR AQUELA CALMARIA.</p>
+                <p data-key="textoSobreMim3">NA VIDA PESSOAL, ADORO VIVER NOVAS EXPERIÊNCIAS E TENTO EQUILIBRAR ESTUDO, TRABALHO E LAZER. SOU APAIXONADA POR CACHORROS E TENHO O SONHO DE TER UMA CASA NA PRAIA, POIS NADA SE COMPARA À ENERGIA E CALMARIA DO MAR.</p>
                 <a href="https://www.canva.com/design/DAGWR0b-SgM/3NJTEJxTivug-K85-sWpbg/view?utm_content=DAGWR0b-SgM&utm_campaign=designshare&utm_medium=link&utm_source=editor" target="_blank" class="cv-button" data-key="btnCv">MEU CV</a>
             </div>
         </div>
@@ -69,7 +77,7 @@
         <div class="projects-grid">
             <div class="project-card">
                 <a href="https://github.com/isabelayared/APS2.2025" target="_blank">
-                    <img src="/assets/sistemadeordenacao.jpeg" alt="projeto Sistema Ordenação">
+                    <img src="assets/sistemadeordenacao.jpeg" alt="projeto Sistema Ordenação">
                 </a>
                 <div class="project-info">
                     <h3 class="project-title" data-key="projTitulo3">Sistema de Busca e Ordenação</h3>
@@ -81,7 +89,7 @@
             </div>
             <div class="project-card">
                 <a href="https://github.com/isabelayared/SistemaValidade/tree/main" target="_blank">
-                    <img src="/assets/sistemavalidade.png" alt="projeto Sistema Validade">
+                    <img src="assets/sistemavalidade.png" alt="projeto Sistema Validade">
                 </a>
                 <div class="project-info">
                     <h3 class="project-title" data-key="projTitulo2">Sistema Validade</h3>
@@ -95,7 +103,7 @@
             </div>
             <div class="project-card">
                 <a href="https://github.com/isabelayared/Sistema-urna-eletr-nica" target="_blank">
-                    <img src="/assets/sistemaurna.png" alt="projeto Urna Eletrônica">
+                    <img src="assets/sistemaurna.png" alt="projeto Urna Eletrônica">
                 </a>
                 <div class="project-info">
                     <h3 class="project-title" data-key="projTitulo1">Sistema Urna Eletrônica</h3>
@@ -106,6 +114,21 @@
                 </div>
             </div>
         </div>
+    </section>
+
+    <section class="github-section" id="github-api">
+        <h2 class="section-title" data-key="tituloGithub">MEUS REPOSITÓRIOS</h2>
+        <p class="subtitle" data-key="subtituloGithub">Últimas atualizações direto do meu GitHub</p>
+        
+        <div class="swiper github-swiper">
+            <div class="swiper-wrapper" id="github-wrapper">
+                </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+
+        <div class="see-more-container" id="see-more-btn-area"></div>
     </section>
 
     <section class="contact-section" id="contato">
@@ -132,13 +155,9 @@
         </div>
     </footer>
 
-    <script src="/translations.js"></script>
-    <script src="/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    
+    <script src="translations.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
-
-
-
-
-
-
