@@ -8,9 +8,49 @@
     --cor-letra-escuro: #333333;
 }
 
-/* --- ESTILOS GERAIS --- */
+/* --- ESTILOS GERAIS E CURSOR --- */
 html {
     scroll-behavior: smooth;
+    cursor: none; /* Esconde o cursor padrão */
+}
+
+a, button, .botao01, .nav-link, .lang-button {
+    cursor: none;
+}
+
+/* Cursor Personalizado */
+.cursor-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--cor-letra-destaque);
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+.cursor-outline {
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--cor-letra-destaque);
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 9998;
+    pointer-events: none;
+    transition: width 0.2s, height 0.2s, background-color 0.2s;
+}
+
+body.hovering .cursor-outline {
+    width: 70px;
+    height: 70px;
+    background-color: rgba(179, 159, 127, 0.1);
+    border-color: transparent;
 }
 
 body {
@@ -32,7 +72,7 @@ body {
     justify-content: flex-end;
     align-items: center;
     padding: 15px 40px;
-    z-index: 10;
+    z-index: 100;
     background-color: var(--cor-fundo-escuro);
     box-sizing: border-box;
 }
@@ -165,7 +205,7 @@ body {
     60% { transform: translateY(-5px); }
 }
 
-/* --- TRANSIÇÕES GRADUAIS (DIVISORES) --- */
+/* --- DIVISORES --- */
 .transition-divider {
     position: absolute;
     left: 0;
@@ -334,7 +374,122 @@ body {
     font-weight: 600;
 }
 
-/* --- ESTILOS DA SEÇÃO CONTATO --- */
+/* --- SEÇÃO GITHUB API (CARROSSEL) --- */
+.github-section {
+    padding: 80px 40px;
+    background-color: #f4f4f4;
+    color: var(--cor-letra-escuro);
+    text-align: center;
+}
+
+.github-swiper {
+    width: 100%;
+    max-width: 1000px;
+    padding: 20px 10px 50px 10px;
+}
+
+.repo-card {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-left: 5px solid var(--cor-letra-destaque);
+    border-radius: 8px;
+    padding: 25px;
+    text-align: left;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 220px;
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
+}
+
+.repo-card:hover {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.repo-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6em;
+    color: var(--cor-letra-escuro);
+    margin: 0 0 10px 0;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.repo-desc {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 15px;
+    line-height: 1.5;
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+.repo-stats {
+    font-size: 0.85em;
+    color: var(--cor-letra-destaque);
+    font-weight: 600;
+    display: flex;
+    gap: 15px;
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* --- PERSONALIZAÇÃO DO SWIPER (SETAS) --- */
+
+/* Cor e Posicionamento */
+.swiper-button-next, .swiper-button-prev {
+    color: var(--cor-letra-destaque) !important;
+    width: 30px !important;  /* Limita a área de clique */
+    height: 30px !important;
+    top: 55%; /* Leve ajuste vertical */
+}
+
+/* Tamanho do Ícone da Seta (Bem menor agora) */
+.swiper-button-next::after, .swiper-button-prev::after {
+    font-size: 1.5rem !important; /* Tamanho visual da seta reduzido */
+    font-weight: bold;
+}
+
+/* Cor das bolinhas de paginação */
+.swiper-pagination-bullet-active {
+    background-color: var(--cor-letra-destaque) !important;
+}
+
+/* --- BOTÃO VER MAIS --- */
+.see-more-container {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.botao-ver-mais-github {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: var(--cor-letra-destaque);
+    color: var(--cor-fundo-escuro);
+    text-decoration: none;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2em;
+    padding: 12px 30px;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.botao-ver-mais-github:hover {
+    background-color: #D1C0A9;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(179, 159, 127, 0.4);
+}
+
+/* --- ESTILOS CONTATO --- */
 .contact-section {
     padding: 120px 40px 80px 40px;
     background-color: var(--cor-fundo-escuro);
@@ -377,7 +532,7 @@ body {
     color: var(--cor-fundo-escuro);
 }
 
-/* --- ESTILOS DO RODAPÉ --- */
+/* --- RODAPÉ --- */
 footer {
     background-color: var(--cor-fundo-escuro);
     color: var(--cor-letra-destaque);
@@ -422,14 +577,12 @@ footer {
         color: var(--cor-letra-destaque);
         cursor: pointer;
     }
-
     .about-content {
         padding: 0 15px;
     }
     .about-text {
         text-align: center;
     }
-
     .projects-grid {
         grid-template-columns: 1fr;
         padding: 0 20px;
@@ -443,5 +596,18 @@ footer {
     .botao01 {
         width: 100%;
         max-width: 300px;
+    }
+    
+    /* ESCONDER CURSOR PERSONALIZADO NO MOBILE */
+    .cursor-dot, .cursor-outline {
+        display: none;
+    }
+    html, a, button, .botao01 {
+        cursor: auto;
+    }
+
+    /* ESCONDER SETAS DO CARROSSEL NO MOBILE (USAR SWIPE) */
+    .swiper-button-next, .swiper-button-prev {
+        display: none !important;
     }
 }
