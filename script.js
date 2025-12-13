@@ -1,6 +1,5 @@
-// Adicione este código no início do seu arquivo script.js
+// --- FUNÇÕES DE TRADUÇÃO E MENU ---
 
-// Função para aplicar as traduções
 function setLanguage(lang) {
     const elements = document.querySelectorAll('[data-key]');
     elements.forEach(element => {
@@ -10,20 +9,15 @@ function setLanguage(lang) {
         }
     });
 
-    // Atualiza a classe 'active' nos botões de idioma
     document.querySelectorAll('.lang-button').forEach(btn => {
         btn.classList.remove('active');
     });
     document.querySelector(`.lang-button[data-lang="${lang}"]`).classList.add('active');
 
-    // Salva o idioma na memória do navegador
     localStorage.setItem('lang', lang);
-
-    // Atualiza a tag <html>
     document.documentElement.lang = lang;
 }
 
-// Event Listeners para os botões de idioma
 document.querySelectorAll('.lang-button').forEach(button => {
     button.addEventListener('click', (event) => {
         event.preventDefault();
@@ -32,8 +26,43 @@ document.querySelectorAll('.lang-button').forEach(button => {
     });
 });
 
-// Lógica para o menu hamburguer
 document.addEventListener('DOMContentLoaded', () => {
+    
+    // --- 1. LÓGICA DO CURSOR PERSONALIZADO ---
+    const cursorDot = document.querySelector('[data-cursor-dot]');
+    const cursorOutline = document.querySelector('[data-cursor-outline]');
+    
+    // Só ativa se não for dispositivo touch (mobile)
+    if (window.matchMedia("(pointer: fine)").matches) {
+        window.addEventListener("mousemove", (e) => {
+            const posX = e.clientX;
+            const posY = e.clientY;
+
+            // Ponto segue exatamente o mouse
+            cursorDot.style.left = `${posX}px`;
+            cursorDot.style.top = `${posY}px`;
+
+            // Círculo tem uma animação suave (efeito delay)
+            cursorOutline.animate({
+                left: `${posX}px`,
+                top: `${posY}px`
+            }, { duration: 500, fill: "forwards" });
+        });
+
+        // Efeito Hover em links e botões
+        const hoverables = document.querySelectorAll('a, button, .botao01, .nav-link, .lang-button');
+        
+        hoverables.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                document.body.classList.add('hovering');
+            });
+            el.addEventListener('mouseleave', () => {
+                document.body.classList.remove('hovering');
+            });
+        });
+    }
+
+    // --- 2. MENU HAMBURGUER ---
     const hamburgerMenu = document.querySelector('.hamburger-menu');
     const navLinksContainer = document.querySelector('.nav-links-container');
 
@@ -43,102 +72,111 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Fecha o menu ao clicar em um link
     document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', () => {
             navLinksContainer.classList.remove('active');
         });
     });
 
-    // O resto do seu código de carrossel
-    const track = document.querySelector('.carousel-track');
-    const cards = document.querySelectorAll('.project-card');
-    const prevButton = document.querySelector('.prev-button');
-    const nextButton = document.querySelector('.next-button');
-    const carousel = document.querySelector('.projects-carousel');
+    // --- 3. SCROLL REVEAL (Animações) ---
+    if (typeof ScrollReveal !== 'undefined') {
+        const sr = ScrollReveal({
+            origin: 'bottom',
+            distance: '40px',
+            duration: 1000,
+            reset: false
+        });
 
-    if (!track || cards.length === 0 || !prevButton || !nextButton || !carousel) {
-        console.error("Elementos do carrossel não encontrados. Verifique as classes no HTML.");
-        return;
+        sr.reveal('.greeting', { delay: 200 });
+        sr.reveal('.name-section', { delay: 400 });
+        sr.reveal('.portfolio-text', { delay: 600 });
+        sr.reveal('.about-text', { origin: 'left', delay: 200 });
+        sr.reveal('.project-card', { interval: 200 });
+        sr.reveal('.github-section', { delay: 200 });
+        sr.reveal('.contact-section .section-title', { delay: 200 });
+        sr.reveal('.button', { delay: 300, origin: 'top' });
     }
 
-    let currentIndex = 0;
-    let isDragging = false;
-    let startPos = 0;
-    let currentTranslate = 0;
-    let prevTranslate = 0;
-    let animationId = 0;
-
-    // Função para atualizar a posição do carrossel
-    function setPositionByIndex() {
-        const cardWidth = cards[0].offsetWidth;
-        currentTranslate = currentIndex * -cardWidth;
-        track.style.transform = `translateX(${currentTranslate}px)`;
-        track.style.transition = 'transform 0.5s ease-in-out';
-    }
-
-    // Navegação com os botões
-    nextButton.addEventListener('click', () => {
-        if (currentIndex < cards.length - 1) {
-            currentIndex++;
-            setPositionByIndex();
-        }
-    });
-
-    prevButton.addEventListener('click', () => {
-        if (currentIndex > 0) {
-            currentIndex--;
-            setPositionByIndex();
-        }
-    });
-
-    // Lógica de Arrastar (Swipe)
-    const startDrag = (event) => {
-        isDragging = true;
-        startPos = event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
-        prevTranslate = currentTranslate;
-        track.style.transition = 'none';
-        animationId = requestAnimationFrame(animation);
-    };
-
-    const drag = (event) => {
-        if (!isDragging) return;
-        const currentPosition = event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
-        currentTranslate = prevTranslate + currentPosition - startPos;
-    };
-
-    const endDrag = () => {
-        cancelAnimationFrame(animationId);
-        isDragging = false;
-        const movedBy = currentTranslate - prevTranslate;
-
-        if (movedBy < -100 && currentIndex < cards.length - 1) {
-            currentIndex++;
-        } else if (movedBy > 100 && currentIndex > 0) {
-            currentIndex--;
-        }
-
-        setPositionByIndex();
-    };
-    
-    const animation = () => {
-        track.style.transform = `translateX(${currentTranslate}px)`;
-        if (isDragging) {
-            requestAnimationFrame(animation);
-        }
-    };
-    
-    carousel.addEventListener('mousedown', startDrag);
-    carousel.addEventListener('mouseup', endDrag);
-    carousel.addEventListener('mouseleave', endDrag);
-    carousel.addEventListener('mousemove', drag);
-    carousel.addEventListener('touchstart', startDrag);
-    carousel.addEventListener('touchend', endDrag);
-    carousel.addEventListener('touchmove', drag);
-
-    // Ajuste inicial no carregamento
-    setPositionByIndex();
-    
-    // Ajusta a posição no redimensionamento da tela
-    window.addEventListener('resize', setPositionByIndex);
+    // --- 4. API DO GITHUB + CARROSSEL ---
+    getRepos();
 });
+
+// --- FUNÇÃO API DO GITHUB ---
+const username = 'isabelayared';
+const reposContainer = document.getElementById('github-wrapper');
+const seeMoreContainer = document.getElementById('see-more-btn-area');
+
+function getRepos() {
+    if (!reposContainer || !seeMoreContainer) return;
+
+    // Busca 3 repositórios
+    fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=3`)
+        .then(response => response.json())
+        .then(data => {
+            reposContainer.innerHTML = ''; 
+            seeMoreContainer.innerHTML = '';
+            
+            // Cria os slides (swiper-slide)
+            data.forEach(repo => {
+                const language = repo.language ? repo.language : 'Código';
+                
+                // Estrutura específica do Swiper
+                const slide = document.createElement('div');
+                slide.classList.add('swiper-slide');
+                
+                slide.innerHTML = `
+                    <a href="${repo.html_url}" target="_blank" class="repo-card">
+                        <h3 class="repo-name">${repo.name}</h3>
+                        <p class="repo-desc">${repo.description || 'Projeto desenvolvido por Isabela Yared.'}</p>
+                        <div class="repo-stats">
+                            <span>🟣 ${language}</span>
+                            <span>⭐ ${repo.stargazers_count}</span>
+                        </div>
+                    </a>
+                `;
+                reposContainer.appendChild(slide);
+            });
+
+            // Cria o botão centralizado fora do carrossel
+            const seeMoreBtn = document.createElement('a');
+            seeMoreBtn.href = `https://github.com/${username}?tab=repositories`;
+            seeMoreBtn.target = '_blank';
+            seeMoreBtn.classList.add('botao-ver-mais-github');
+            seeMoreBtn.innerHTML = `<span data-key="btnVerTodosGithub">VER TODOS OS PROJETOS</span> ➜`;
+            
+            seeMoreContainer.appendChild(seeMoreBtn);
+
+            // INICIALIZA O SWIPER APÓS CARREGAR OS DADOS
+            new Swiper('.github-swiper', {
+                slidesPerView: 1, // Celular: 1 slide
+                spaceBetween: 20,
+                loop: true,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                breakpoints: {
+                    640: {
+                        slidesPerView: 2, // Tablet: 2 slides
+                        spaceBetween: 20,
+                    },
+                    1024: {
+                        slidesPerView: 3, // Desktop: 3 slides
+                        spaceBetween: 30,
+                    },
+                },
+            });
+
+            // Reaplica as traduções para traduzir o botão novo
+            const currentLang = localStorage.getItem('lang') || 'pt';
+            setLanguage(currentLang);
+        })
+        .catch(error => {
+            console.error('Erro ao buscar repositórios:', error);
+            reposContainer.innerHTML = '<p>Não foi possível carregar os repositórios.</p>';
+        });
+}
