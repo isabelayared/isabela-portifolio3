@@ -8,6 +8,18 @@
     --cor-letra-escuro: #333333;
 }
 
+/* --- FUNDO DE PARTÍCULAS (CANVAS) --- */
+#particle-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Fica atrás de todo o conteúdo */
+    background-color: var(--cor-fundo-escuro);
+    pointer-events: none; /* Permite clicar nos links sobre o canvas */
+}
+
 /* --- ESTILOS GERAIS E CURSOR --- */
 html {
     scroll-behavior: smooth;
@@ -46,6 +58,7 @@ a, button, .botao01, .nav-link, .lang-button {
     transition: width 0.2s, height 0.2s, background-color 0.2s;
 }
 
+/* Efeito magnético do cursor */
 body.hovering .cursor-outline {
     width: 70px;
     height: 70px;
@@ -54,7 +67,7 @@ body.hovering .cursor-outline {
 }
 
 body {
-    background-color: var(--cor-fundo-escuro);
+    background-color: transparent; /* O fundo preto vem do canvas agora */
     color: var(--cor-letra-destaque);
     font-family: 'Poppins', sans-serif;
     text-align: center;
@@ -153,6 +166,7 @@ body {
     margin: 20px 0;
 }
 
+/* Ajustes para o texto quebrado pelo JS */
 .name-part {
     font-family: 'Bebas Neue', sans-serif;
     font-size: clamp(4em, 15vw, 12em);
@@ -164,6 +178,7 @@ body {
     text-shadow: 
         -10px -10px 0 var(--cor-fundo-escuro),
         5px 5px 0 #D1C0A9;
+    display: flex; /* Permite os spans das letras lado a lado */
 }
 
 .name-part.first, .name-part.last {
@@ -292,7 +307,7 @@ body {
     color: var(--cor-fundo-claro);
 }
 
-/* --- ESTILOS DA SEÇÃO PROJETOS (GRID) --- */
+/* --- ESTILOS DA SEÇÃO PROJETOS (GRID 3D) --- */
 .projects-section {
     padding: 80px 40px;
     background-color: var(--cor-fundo-claro);
@@ -313,6 +328,8 @@ body {
     gap: 30px;
     max-width: 1200px;
     margin: 0 auto;
+    /* Adiciona profundidade para o efeito 3D */
+    perspective: 1000px; 
 }
 
 .project-card {
@@ -321,11 +338,15 @@ body {
     overflow: hidden;
     text-align: center;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Prepara para o GSAP 3D */
+    will-change: transform;
+    transform-style: preserve-3d;
+    transition: transform 0.1s; /* Suavidade no JS */
 }
 
+/* O hover padrão foi removido em favor do efeito JS, 
+   mas mantemos um estado seguro caso JS falhe */
 .project-card:hover {
-    transform: translateY(-8px);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
@@ -441,23 +462,19 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
-/* --- PERSONALIZAÇÃO DO SWIPER (SETAS) --- */
-
-/* Cor e Posicionamento */
+/* --- PERSONALIZAÇÃO DO SWIPER --- */
 .swiper-button-next, .swiper-button-prev {
     color: var(--cor-letra-destaque) !important;
-    width: 30px !important;  /* Limita a área de clique */
+    width: 30px !important;
     height: 30px !important;
-    top: 55%; /* Leve ajuste vertical */
+    top: 55%;
 }
 
-/* Tamanho do Ícone da Seta (Bem menor agora) */
 .swiper-button-next::after, .swiper-button-prev::after {
-    font-size: 1.5rem !important; /* Tamanho visual da seta reduzido */
+    font-size: 1.5rem !important;
     font-weight: bold;
 }
 
-/* Cor das bolinhas de paginação */
 .swiper-pagination-bullet-active {
     background-color: var(--cor-letra-destaque) !important;
 }
@@ -546,7 +563,27 @@ footer {
     font-size: 0.9em;
 }
 
-/* --- MEDIA QUERIES (RESPONSIVIDADE) --- */
+/* --- EASTER EGG (Matrix Mode) --- */
+body.matrix-mode {
+    background-color: #000 !important;
+}
+body.matrix-mode * {
+    color: #0F0 !important;
+    border-color: #0F0 !important;
+    font-family: 'Courier New', Courier, monospace !important;
+    text-shadow: 0 0 5px #0F0;
+}
+body.matrix-mode .section-title, 
+body.matrix-mode .subtitle,
+body.matrix-mode p,
+body.matrix-mode a {
+    color: #0F0 !important;
+}
+body.matrix-mode img {
+    filter: sepia(100%) hue-rotate(50deg) saturate(500%);
+}
+
+/* --- RESPONSIVIDADE --- */
 @media (max-width: 992px) {
     .navbar {
         justify-content: flex-end;
